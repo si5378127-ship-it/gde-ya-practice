@@ -6,8 +6,8 @@
 export const links = {
   telegram: 'https://t.me/psycholog_kutuzova',
   consultation: 'https://coach-kytyzova.ru/',
-  /** Адрес опубликованного интерактива. Пока пусто — на карточке не показывается. */
-  practiceUrl: 'https://gde-ya-seychas.netlify.app',
+  /** Публичный адрес практики — показывается на PNG-карточке */
+  practiceUrl: 'https://si5378127-ship-it.github.io/gde-ya-practice/',
 }
 
 export const author = {

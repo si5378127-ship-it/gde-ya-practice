@@ -10,8 +10,6 @@ interface WelcomeProps {
 export function Welcome({ onStart, onRestart, hasProgress }: WelcomeProps) {
   return (
     <section className="card card--welcome">
-      <p className="welcome__gift">{texts.welcome.gift}</p>
-
       <h1 className="welcome__title">{texts.welcome.title}</h1>
       <p className="welcome__author">{texts.welcome.author}</p>
 

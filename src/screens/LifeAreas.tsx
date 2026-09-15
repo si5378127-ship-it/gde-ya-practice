@@ -64,19 +64,34 @@ interface BridgeProps {
   onBack: () => void
 }
 
-/** Промежуточная карточка: «а вы сами там есть?» */
+/** Промежуточная карточка: показывает выбранные сферы и мягкий вопрос */
 export function LifeAreasBridge({ selected, onNext, onBack }: BridgeProps) {
   const hasSelfArea = selfAreaIds.some((id) => selected.includes(id))
-  const message = hasSelfArea
+  const followUp = hasSelfArea
     ? texts.lifeAreasBridge.withSelf
-    : texts.lifeAreasBridge.default
+    : texts.lifeAreasBridge.question
+
+  const selectedLabels = lifeAreas
+    .filter((area) => selected.includes(area.id))
+    .map((area) => area.text)
 
   return (
     <section className="card card--bridge">
       <span className="leaf" aria-hidden="true">
         🌿
       </span>
-      <p className="bridge__text">{message}</p>
+
+      <p className="bridge__intro">{texts.lifeAreasBridge.intro}</p>
+
+      <ul className="bridge__chips" aria-label={texts.lifeAreasBridge.intro}>
+        {selectedLabels.map((label) => (
+          <li key={label} className="bridge__chip">
+            {label}
+          </li>
+        ))}
+      </ul>
+
+      <p className="bridge__text">{followUp}</p>
 
       <div className="nav">
         <button type="button" className="button button--ghost" onClick={onBack}>
