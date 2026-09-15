@@ -4,7 +4,7 @@
  */
 
 export const links = {
-  telegram: 'https://t.me/psycholog_kutuzova',
+  telegram: 'https://t.me/psyholog_kutuzova',
   consultation: 'https://coach-kytyzova.ru/',
   /** Публичный адрес практики — показывается на PNG-карточке */
   practiceUrl: 'https://si5378127-ship-it.github.io/gde-ya-practice/',
