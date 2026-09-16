@@ -6,7 +6,6 @@
  * как он его написал, без добавления «Я бы…».
  */
 
-import { links } from '../config/links'
 import { texts } from '../data/texts'
 
 export const CARD_SIZE = 1080
@@ -146,9 +145,6 @@ export function drawShareCard(
   canvas.width = CARD_SIZE
   canvas.height = CARD_SIZE
 
-  const practiceUrl = links.practiceUrl.trim()
-  const showUrl = practiceUrl.length > 0
-
   // фон
   ctx.fillStyle = palette.background
   ctx.fillRect(0, 0, CARD_SIZE, CARD_SIZE)
@@ -218,10 +214,9 @@ export function drawShareCard(
   ctx.lineTo(centerX + 70, 366)
   ctx.stroke()
 
-  // нижний блок: вопрос → подпись → опциональный URL
-  const questionY = showUrl ? 820 : 848
-  const footerY = showUrl ? 892 : 930
-  const urlY = 968
+  // нижний блок: вопрос → подпись (без URL)
+  const questionY = 848
+  const footerY = 930
   const textTop = 400
   const textBottom = questionY - 48
   const textMaxHeight = textBottom - textTop
@@ -246,15 +241,6 @@ export function drawShareCard(
   ctx.fillStyle = palette.muted
   ctx.font = `26px ${sans}`
   ctx.fillText(texts.share.cardFooter, centerX, footerY)
-
-  // адрес интерактива — только если заполнен в config
-  if (showUrl) {
-    ctx.fillStyle = palette.muted
-    ctx.font = `22px ${sans}`
-    ctx.globalAlpha = 0.85
-    ctx.fillText(practiceUrl, centerX, urlY)
-    ctx.globalAlpha = 1
-  }
 }
 
 /** Возвращает data URL PNG для показа и сохранения */
